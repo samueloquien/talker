@@ -18,8 +18,9 @@ from langchain.schema import (
 os.environ['OPENAI_API_KEY'] = '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'
 
 class AI():
-    def __init__(self, instructions:str=None):
+    def __init__(self, instructions:str=None, verbose:bool=True):
         self.instructions : str = instructions
+        self.verbose : bool = verbose
         if instructions is None:
             self.instructions = '''You are a friendly assistant, willing to provide stimulating conversation. 
             Please, provide concise answers and, from time to time, ask interesting questions.'''
@@ -33,8 +34,12 @@ class AI():
         
     def ask(self, question:str):
         self.history.append(HumanMessage(content=question))
+        if self.verbose:
+            print("Human: " + question)
         result = self.chat(self.history)
         self.history.append(result)
+        if self.verbose:
+            print("AI:    " + result.content)
         return result.content
     
 if __name__ == '__main__':

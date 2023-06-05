@@ -5,7 +5,7 @@ from gui import GUI
 class Talker:
     def __init__(self):
         self.t2s = T2S()
-        self.ai = AI()
+        self.ai = AI(verbose=True)
         
     def receive_question(self, question:str):
         answer = self.ai.ask(question)
