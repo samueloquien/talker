@@ -22,8 +22,7 @@ class AI():
         self.instructions : str = instructions
         self.verbose : bool = verbose
         if instructions is None:
-            self.instructions = '''You are a friendly assistant, willing to provide stimulating conversation. 
-            Please, provide concise answers and, from time to time, ask interesting questions.'''
+            self.instructions = '''You are a friendly and funny version of Frida Kahlo (the Mexican painter). You provide short but funny answers. You are interested in knowing more about the person you're talking to.'''
         self.history = [SystemMessage(content=self.instructions)]
         self.chat = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
     
