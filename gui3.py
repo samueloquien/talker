@@ -1,6 +1,7 @@
 import tkinter as tk
-import pyttsx3
+from talker import Talker
 
+talker = Talker()
 
 root = tk.Tk()
 root.title("Talker Application")
@@ -13,26 +14,12 @@ label.pack(pady=10)
 entry_box = tk.Entry(root, width=40)
 entry_box.pack(pady=5)
 
-def speak():
-    engine = pyttsx3.init()
-    engine.say(entry_box.get())
-    engine.runAndWait()
+def process_entry_text():
+    talker.receive_question(entry_box.get())
     entry_box.delete(0, tk.END)
 
-# create a button and attach it to the speak function
-button = tk.Button(root, text="Speak", command=speak)
+# create a button and attach it to the process_entry_text function
+button = tk.Button(root, text="Speak", command=process_entry_text)
 button.pack(pady=5)
 
 root.mainloop()
-
-'''
-button = tk.Button(root, text="Speak", command=speak)
-button.pack(pady=10)
-
-root.mainloop()
-'''
-
-'''
-sabes que yo no puedo salir
-porque no tengo camiseta
-'''
