@@ -8,6 +8,7 @@ langchain = "*"
 openai = "*"
 huggingface-hub = "*"
 pyttsx3 = "*"
+google-cloud-texttospeech = "*"
 
 [dev-packages]
 
