@@ -77,3 +77,14 @@ def text_to_mp3(voice_name: str, text: str):
 #list_languages()
 #text_to_wav("en-AU-Neural2-A", "What is the temperature in Sydney?")
 text_to_mp3("en-AU-Neural2-A", "What is the temperature in Sydney?")
+
+import pygame
+
+pygame.init()
+pygame.mixer.music.load("en-AU-Neural2-A.mp3")
+pygame.mixer.music.play()
+
+# keep the music playing until the file ends or the program is stopped
+while pygame.mixer.music.get_busy():
+    continue
+print('Finished')
