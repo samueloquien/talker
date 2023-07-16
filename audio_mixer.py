@@ -31,12 +31,13 @@ class AudioMixer:
         self.recorded_audio_content = b''.join(frames)
 
         # Save audio to file
-        waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
-        waveFile.setnchannels(CHANNELS)
-        waveFile.setsampwidth(self.audio.get_sample_size(FORMAT))
-        waveFile.setframerate(RATE)
-        waveFile.writeframes(self.recorded_audio_content)
-        waveFile.close()
+        if output_filename is not None:
+            waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+            waveFile.setnchannels(CHANNELS)
+            waveFile.setsampwidth(self.audio.get_sample_size(FORMAT))
+            waveFile.setframerate(RATE)
+            waveFile.writeframes(self.recorded_audio_content)
+            waveFile.close()
 
 if __name__ == '__main__':
     m = AudioMixer()
