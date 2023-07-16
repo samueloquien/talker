@@ -4,8 +4,9 @@ import wave
 class AudioMixer:
     def __init__(self):
         self.audio = pyaudio.PyAudio()
+        self.recorded_audio_content = None
     
-    def record(self, max_seconds:int=5, output_filename='output.wav'):
+    def record(self, max_seconds:int=5, output_filename:str=''):
 
         # Set audio parameters
         FORMAT = pyaudio.paInt16
@@ -31,7 +32,7 @@ class AudioMixer:
         self.recorded_audio_content = b''.join(frames)
 
         # Save audio to file
-        if output_filename is not None:
+        if output_filename:
             waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
             waveFile.setnchannels(CHANNELS)
             waveFile.setsampwidth(self.audio.get_sample_size(FORMAT))
