@@ -13,6 +13,7 @@ pygame = "*"
 google-cloud-speech = "*"
 pyaudio = "*"
 wave = "*"
+mypy = "*"
 
 [dev-packages]
 
