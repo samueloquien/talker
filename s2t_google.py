@@ -1,6 +1,6 @@
 from google.cloud import speech
 
-class STTGoogle:
+class S2TGoogle:
     def __init__(self, language:str='en'):
         self.client : speech.SpeechClient = speech.SpeechClient.from_service_account_file('talker-388916-fcf495d2e4a2.json')
         self.language : str = language
