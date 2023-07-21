@@ -10,6 +10,9 @@ huggingface-hub = "*"
 pyttsx3 = "*"
 google-cloud-texttospeech = "*"
 pygame = "*"
+google-cloud-speech = "*"
+pyaudio = "*"
+wave = "*"
 
 [dev-packages]
 
