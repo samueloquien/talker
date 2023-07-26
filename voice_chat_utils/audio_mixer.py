@@ -31,7 +31,7 @@ class AudioMixer:
     # Save audio to file
     def save_recorded_audio(self, filename:str):
         if filename[-4:].upper() != '.WAV':
-            filename.append('.wav')
+            filename += '.wav'
         waveFile = wave.open(filename, 'wb')
         waveFile.setnchannels(self.CHANNELS)
         waveFile.setsampwidth(self.audio.get_sample_size(self.FORMAT))
