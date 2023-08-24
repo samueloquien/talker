@@ -6,7 +6,7 @@ from langchain.schema import HumanMessage, SystemMessage, AIMessage
 os.environ['OPENAI_API_KEY'] = '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'
 
 class AI():
-    def __init__(self, instructions:str='', verbose:bool=False):
+    def __init__(self, instructions:str='', verbose:bool=False) -> None:
         self.instructions : str = instructions
         self.verbose : bool = verbose
         if not instructions:
@@ -14,12 +14,12 @@ class AI():
         self.history : list[Any] = [SystemMessage(content=self.instructions)]
         self.chat = ChatOpenAI(client=None, model="gpt-3.5-turbo", temperature=0)
     
-    def reset(self, instructions:str=''):
+    def reset(self, instructions:str='') -> None:
         if instructions:
             self.instructions = instructions
         self.history = [SystemMessage(content=self.instructions)]
         
-    def ask(self, question:str):
+    def ask(self, question:str) -> str:
         self.history.append(HumanMessage(content=question))
         if self.verbose:
             print("Human: " + question)
