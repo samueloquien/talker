@@ -1,17 +1,20 @@
 from typing import Sequence
 import google.cloud.texttospeech as tts
-from elapsed_timer import ElapsedTimer
 import io
 import pygame
 
 class T2SGoogle:
     def __init__(self, language:str='en', gender:str='male'):
-        self.client = tts.TextToSpeechClient.from_service_account_file('talker-388916-fcf495d2e4a2.json')
         preferred_voices = {
             "en": {'male':'en-US-Standard-A', 'female':'en-US-Standard-B'},
             "es": {'male':'es-ES-Standard-B', 'female':'es-ES-Standard-A'}
         }
-        self.voice = preferred_voices[language][gender]
+        try:
+            self.voice : str = preferred_voices[language][gender]
+            self.client : tts.TextToSpeechClient | None = tts.TextToSpeechClient.from_service_account_file('talker-388916-fcf495d2e4a2.json')
+        except:
+            self.voice = ''
+            self.client = None
         pygame.init()
 
     def get_unique_languages_from_voices(self, voices: Sequence[tts.Voice]):
@@ -30,6 +33,7 @@ class T2SGoogle:
         for i, language in enumerate(sorted(languages)):
             print(f"{language:>10}", end="\n" if i % 5 == 4 else "")
             
+        return languages
 
     def list_voices(self, language_code=None):
         response = self.client.list_voices(language_code=language_code)
@@ -43,11 +47,22 @@ class T2SGoogle:
             rate = voice.natural_sample_rate_hertz
             print(f"{languages:<8} | {name:<24} | {gender:<8} | {rate:,} Hz")
             
+        return voices
+            
     def save_synthesize_response_to_file(self, response:tts.SynthesizeSpeechResponse, filename:str):
+        if not filename[-4:].lower() == '.wav':
+            print('Invalid file name extension. Only .wav files are supported.')
+            return False
+        if not isinstance(response, tts.SynthesizeSpeechResponse):
+            print("Invalid parameter 'response'. Must be a SynthesizeSpeechResponse instance.")
+            return False
         with open(filename,'wb') as f:
             f.write(response.audio_content)
+        return True
 
     def speak(self, text:str):
+        if not text or not self.voice or self.client is None:
+            return
         voice_name = self.voice
         language_code = voice_name[:5]
         text_input = tts.SynthesisInput(text=text)
@@ -73,6 +88,5 @@ class T2SGoogle:
             continue
 
 if __name__ == '__main__':
-    from elapsed_timer import ElapsedTimer
     t2s = T2SGoogle('es','male')
-    t2s.speak('Qué sueño tengo?')
+    t2s.speak('¿Qué sueño tengo?')
