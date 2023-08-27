@@ -1,4 +1,3 @@
-from voice_chat_utils.t2s import T2S
 from voice_chat_utils.t2s_google import T2SGoogle
 from voice_chat_utils.ai import AI
 from gui import GUI
