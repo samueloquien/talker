@@ -1,6 +1,5 @@
-from t2s import T2S
-from t2s_google import T2SGoogle
-from ai import AI
+from voice_chat_utils.t2s_google import T2SGoogle
+from voice_chat_utils.ai import AI
 from gui import GUI
 
 class Talker:

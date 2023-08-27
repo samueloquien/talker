@@ -7,12 +7,14 @@ name = "pypi"
 langchain = "*"
 openai = "*"
 huggingface-hub = "*"
-pyttsx3 = "*"
 google-cloud-texttospeech = "*"
 pygame = "*"
 google-cloud-speech = "*"
 pyaudio = "*"
 wave = "*"
+mypy = "*"
+pytest = "*"
+pytest-mock = "*"
 
 [dev-packages]
 
