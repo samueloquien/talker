@@ -1,4 +1,4 @@
 *.pyc
 *.mp3
 *.wav
-talker-*.json
+*google_service_account_settings.json

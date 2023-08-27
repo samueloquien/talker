@@ -12,7 +12,7 @@ class S2TGoogle:
 
         :param language: The language of the audio. Default is 'en' (English).
         """
-        self.client: speech.SpeechClient = speech.SpeechClient.from_service_account_file('talker-388916-fcf495d2e4a2.json')
+        self.client: speech.SpeechClient = speech.SpeechClient.from_service_account_file('talker_google_service_account_settings.json')
         self.language: str = language
         self.recognized_text: str = ''
 

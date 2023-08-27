@@ -21,7 +21,7 @@ class T2SGoogle:
         }
         try:
             self.voice: str = preferred_voices[language][gender]
-            self.client: tts.TextToSpeechClient | None = tts.TextToSpeechClient.from_service_account_file('talker-388916-fcf495d2e4a2.json')
+            self.client: tts.TextToSpeechClient | None = tts.TextToSpeechClient.from_service_account_file('talker_google_service_account_settings.json')
         except:
             self.voice = ''
             self.client = None
