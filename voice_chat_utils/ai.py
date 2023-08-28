@@ -1,10 +1,8 @@
-import os
 from typing import Any
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage, AIMessage
-
-# Set the OpenAI API key
-os.environ['OPENAI_API_KEY'] = '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'
+from dotenv import load_dotenv
+load_dotenv()
 
 class AI():
     """

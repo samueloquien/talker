@@ -15,6 +15,7 @@ wave = "*"
 mypy = "*"
 pytest = "*"
 pytest-mock = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

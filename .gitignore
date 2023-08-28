@@ -1,4 +1,5 @@
 *.pyc
 *.mp3
 *.wav
+.env*
 *google_service_account_settings.json
